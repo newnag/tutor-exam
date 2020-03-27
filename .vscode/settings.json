@@ -1,0 +1,23 @@
+{
+    "workbench.colorTheme": "Monokai",
+
+    "liveSassCompile.settings.formats":[
+        // This is Default.
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/"
+        },
+        // You can add more
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/css/"
+        },
+    ],
+    "workbench.startupEditor": "welcomePage",
+
+    "php.executablePath": "C:\\xampp\\php\\php.exe",
+    "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "workbench.iconTheme": "material-icon-theme",
+}

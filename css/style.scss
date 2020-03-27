@@ -1,0 +1,100 @@
+/*
+    theme name:Tutor_V1
+*/
+
+// ------------------------- variable ------------------------- //
+$background_main : #a5a5a5;
+$background_content : #fff;
+
+//display
+$display-1: 480px;
+$display-2: 481px;
+$display-3: 768px;
+$display-4: 769px;
+$display-5: 1024px;
+$display-6: 1025px;
+$display-7: 1366px;
+$display-8: 1367px;
+$display-9: 1600px;
+
+// ---------------------------- Tag --------------------------- //
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    background-color: $background_main;
+    font-size: 1.4em
+}
+img{
+    max-width: 100%;
+}
+
+// ------------------------ function ------------------------- //
+$font-size:(
+    'h1':22,
+    'h2':20,
+    'h3':18,
+    'p':14,
+);
+@function getFontsize($block){
+    @return map-get($font-size , $block );
+}
+@mixin font-size ($size) {
+    font-size: $size + px;
+    font-size: ($size / 10) + rem;
+}
+
+// ------------------------- use code ------------------------ //
+.container{
+    margin: 0 auto;
+    width: 80%;
+
+    @media screen and (max-width:$display-1) {
+        width: 95%;
+    }
+    @media screen and (min-width:$display-2) and (max-width:$display-3) {
+        width: 90%;
+    }
+    @media screen and (min-width:$display-4) and (max-width:$display-5) {
+        width: 85%;
+    }
+}
+
+
+// ------------------------- style --------------------------- //
+header{
+    .header{
+        display: flex;
+        padding: 2% 5%;
+        justify-content: center;
+
+        .logo{
+            figure{
+                width: 80px;
+                img{
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .text-head{
+            display: flex;
+            align-items: center;
+            margin: 0 2%;
+
+            @include font-size(getFontsize('h1'));
+        }
+    }
+}
+
+article{
+    .content{
+        background: $background_content;
+        height: fit-content;
+    }
+}
