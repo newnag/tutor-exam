@@ -6,6 +6,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/style.css">
+    <?php wp_head(); ?>
 </head>
 <body>
     
@@ -20,3 +21,21 @@
         </div>
     </div>
 </header>
+
+<nav>
+    <!-- <ul class="nav-menu">
+        <li class="menu"><a href="">หน้าแรก</a></li>
+        <li class="menu"><a href="">ประถมต้น</a></li>
+        <li class="menu"><a href="">ประถมปลาย</a></li>
+        <li class="menu"><a href="">มัถยมต้น</a></li>
+        <li class="menu"><a href="">มัถยมปลาย</a></li>
+        <li class="menu"><a href="">ความรู้ทั่วไป</a></li>
+    </ul> -->
+    <?php 
+        wp_nav_menu( array(
+            'menu' => 'mainmenu',
+            'menu_class' => 'nav-menu',
+            
+        ) );
+    ?>
+</nav>

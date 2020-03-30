@@ -5,6 +5,7 @@
 // ------------------------- variable ------------------------- //
 $background_main : #a5a5a5;
 $background_content : #fff;
+$text_color : #000;
 
 //display
 $display-1: 480px;
@@ -92,9 +93,62 @@ header{
     }
 }
 
+nav{
+    background-color: $background_content;
+    margin: 2% 0;
+    padding: 1% 0;
+
+    .nav-menu{
+        display: flex;
+        justify-content: center;
+
+        li{
+            list-style: none;
+            margin: 0 2%;
+            
+            a{
+                text-decoration: none;
+                color: $text_color;
+
+                @media screen and (min-width:1366px) {
+                    &:hover{
+                        color: green;
+                        font-size: 18px;
+                        transition: all .3s;
+                    }
+                }
+            }
+        }
+    }
+}
+
 article{
     .content{
         background: $background_content;
         height: fit-content;
+    }
+}
+
+section{
+    .game-zone{
+        width: 60%;
+        margin: 0 auto;
+
+        .box{
+            display: none;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+
+            .button-group{
+                display: grid;
+                grid-template-columns: repeat(2,48%);
+                grid-gap: 2%;
+            }
+
+            &:nth-child(1){
+                display: flex;
+            }
+        }
     }
 }

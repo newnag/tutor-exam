@@ -74,10 +74,75 @@ header .header .text-head {
   font-size: 2.2rem;
 }
 
+nav {
+  background-color: #fff;
+  margin: 2% 0;
+  padding: 1% 0;
+}
+
+nav .nav-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav .nav-menu li {
+  list-style: none;
+  margin: 0 2%;
+}
+
+nav .nav-menu li a {
+  text-decoration: none;
+  color: #000;
+}
+
+@media screen and (min-width: 1366px) {
+  nav .nav-menu li a:hover {
+    color: green;
+    font-size: 18px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+}
+
 article .content {
   background: #fff;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+section .game-zone {
+  width: 60%;
+  margin: 0 auto;
+}
+
+section .game-zone .box {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+section .game-zone .box .button-group {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (48%)[2];
+      grid-template-columns: repeat(2, 48%);
+  grid-gap: 2%;
+}
+
+section .game-zone .box:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */

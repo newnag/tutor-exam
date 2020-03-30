@@ -1,12 +1,13 @@
 <?php get_header(); ?>
 
-<main>
-    <article>
-        <div class="content container">
-            <p>Test</p>
-        </div>
-    </article>
-</main>
+<?php while(have_posts()) : the_post() ?>
+    <main>
+        <article>
+            <div class="content container">
+                <?php the_content(); ?>
+            </div>
+        </article>
+    </main>
+<?php endwhile; ?>
 
-</body>
-</html>
+<?php get_footer() ?>
