@@ -18,11 +18,11 @@ get_header(); ?>
 <section>
     <div class="game-zone">
         <?php while($query->have_posts()) : $query->the_post() ?>
-            <div class="box" id="<?php echo $post->ID ?>" data-ans="TRUE">
+            <div class="box" id="<?php echo $post->ID ?>" data-ans="<?php echo get_the_excerpt() ?>">
                 <h2><?php the_title() ?></h2>
                 <div class="button-group">
                     <button class="next-button">Click</button>
-                    <button class="next-button">TRUE</button>
+                    <button class="next-button"><?php echo get_the_excerpt() ?></button>
                     <button class="next-button">Click</button>
                     <button class="next-button">Click</button>
                 </div>
