@@ -132,12 +132,40 @@ section .game-zone .box {
   text-align: center;
 }
 
+section .game-zone .box .question-box {
+  height: 100px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid green;
+  margin: 20px 0;
+  padding: 1%;
+}
+
 section .game-zone .box .button-group {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (48%)[2];
       grid-template-columns: repeat(2, 48%);
-  grid-gap: 2%;
+  grid-gap: 45px;
+  grid-row-gap: 20px;
+}
+
+section .game-zone .box .button-group .next-button {
+  height: 70px;
+  border-radius: 20px;
+  border: 1px solid green;
+  cursor: pointer;
+}
+
+section .game-zone .box .button-group .next-button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 4px 4px 8px #4a4a4a;
+          box-shadow: 4px 4px 8px #4a4a4a;
+  background-color: lightgreen;
+  color: red;
+  -webkit-transition: all .2s;
+  transition: all .2s;
 }
 
 section .game-zone .box:nth-child(1) {

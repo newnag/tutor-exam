@@ -1,9 +1,5 @@
-<?php
-    $ans = array(
-        "name" => "ipadmini",
-        "gen" => "5",
-        "price" => "13000"
-    );
 
-    echo json_encode($ans);
-?>
+
+<?php while($query->have_posts()) : $query->the_post() ?>
+    <div class="test" id="<?php echo $post->ID ?>"></div>
+<?php endwhile; ?>
