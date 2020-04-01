@@ -1,17 +1,41 @@
 <?php 
 global $post;
+
+$link .= urldecode($_SERVER['REQUEST_URI']);
+
+$path = explode('/',$link);
+// $path[3] ตือตำแหน่งที่ใช้อ้างอิงหมวดหมู่ย่อย
+
+$cate = $path[3];
+
+// เช็คชื่อหมวดหมู่
+$category = get_queried_object();
+//print_r($category);
+//echo $category->name;
+
+
+//$cat = get_the_category();
+//print_r($cat);
+
+//$parentCatName = get_cat_name($cat[0]->term_id);
+
+//print_r($parentCatName);
+//echo $parentCatName;
+
 get_header(); ?>
 
-<?php
-    // เช็คชื่อหมวดหมู่
-    $category = get_queried_object();
-    //print_r($category);
-    //echo $category->name;
+<section>
+    <div class="subject">
+        <button class="next-button" data-cat=""></button>
+    </div>
+</section>
 
+<?php
     // คิวรี่โพส
     $query = new WP_Query(array(
         'orderby'           =>  'rand',
-        'posts_per_page'    =>  3,
+        'posts_per_page'    =>  8,
+        'category_name '    =>  $cate,
     ));
 ?>
 
@@ -29,7 +53,6 @@ get_header(); ?>
                         $ans4 = '<button class="next-button">'.get_post_meta(get_the_ID(),'correct_anw',true).'</button>';
 
                         $anw_array = array($ans1,$ans2,$ans3,$ans4);
-                        //$random = array_rand($anw_array,4);
                         $random = range(0,3);
                         shuffle($random);
                         for($a=0;$a<=count($anw_array);$a++){
@@ -37,17 +60,7 @@ get_header(); ?>
                             //print_r($random) ;
                             echo $anw_array[$random[$a]];
                         }
-                        
-
-                        //print_r($random);
-
-                        
-                        // echo $anw_array[$random[1]];
-                        // echo $anw_array[$random[2]];
-                        // echo $anw_array[$random[3]];
                     ?>
-                    
-                    
                 </div>
             </div>
         <?php endwhile; ?>
