@@ -6,6 +6,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/style.css">
+    <script src="https://kit.fontawesome.com/37e3c13129.js" crossorigin="anonymous"></script>
     <?php wp_head(); ?>
 </head>
 <body>
