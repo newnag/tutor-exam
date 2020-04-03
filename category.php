@@ -2,10 +2,8 @@
 global $post;
 
 $link .= urldecode($_SERVER['REQUEST_URI']);
-
 $path = explode('/',$link);
 // $path[3] ตือตำแหน่งที่ใช้อ้างอิงหมวดหมู่ย่อย
-
 $cate = $path[3];
 
 // เช็คชื่อหมวดหมู่
@@ -34,6 +32,7 @@ get_header(); ?>
 </section>
 
 <?php
+    // เช็คสถานะการเลือกหมวดหมู่ย่อย หากยังไม่เลือกจะไม่แสดงคำถาม
     if($cate === ''){
         $look = false;
     }
@@ -44,7 +43,7 @@ get_header(); ?>
     // คิวรี่โพส
     $query = new WP_Query(array(
         'orderby'           =>  'rand',
-        'posts_per_page'    =>  8,
+        'posts_per_page'    =>  15,
         'category_name'    =>  $cate,
     ));
 ?>
@@ -87,8 +86,8 @@ get_header(); ?>
     <div class="helper">
         <h2>ตัวช่วย</h2>
         <div class="button-group">
-            <button class="help" id="cheat-ans"><i class="fab fa-hire-a-helper"></i>เฉลยคำตอบ เหลือ 1</button>
-            <button class="help" id="cut-ans"><i class="fab fa-hire-a-helper"></i>ตัดข้อทิ้ง เหลือ 1</button>
+            <button class="help" id="cheat-ans"><i class="fab fa-hire-a-helper"></i>เฉลยคำตอบ</button>
+            <button class="help" id="cut-ans"><i class="fab fa-hire-a-helper"></i>ตัดข้อทิ้ง</button>
         </div>
     </div>
 

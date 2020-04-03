@@ -178,13 +178,13 @@ section .game-zone .box .button-group {
   display: grid;
   -ms-grid-columns: (48%)[2];
       grid-template-columns: repeat(2, 48%);
-  grid-gap: 45px;
+  grid-gap: 4%;
   grid-row-gap: 20px;
 }
 
 section .game-zone .box .button-group .next-button {
   height: 100px;
-  width: 92%;
+  width: 100%;
   background-color: #fff;
   border: 1px solid green;
   border-radius: 20px;
@@ -308,14 +308,14 @@ section .score h2 {
   display: grid;
   -ms-grid-columns: (48%)[2];
       grid-template-columns: repeat(2, 48%);
-  grid-gap: 2%;
+  grid-gap: 4%;
   width: 100%;
   padding: 0 20%;
 }
 
 .helper .button-group .help {
   height: 100px;
-  width: 92%;
+  width: 100%;
   background-color: #fff;
   border: 1px solid green;
   border-radius: 20px;
@@ -342,5 +342,22 @@ section .score h2 {
   font-size: 18px;
   font-size: 1.8rem;
   margin-right: 2%;
+}
+
+.helper .button-group .null {
+  background-color: gray;
+  color: #fff;
+  border: #525151;
+  -webkit-animation: none;
+          animation: none;
+}
+
+.helper .button-group .null:hover {
+  -webkit-transform: none;
+          transform: none;
+  background-color: gray;
+  color: #fff;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
 }
 /*# sourceMappingURL=style.css.map */

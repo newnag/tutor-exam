@@ -46,14 +46,20 @@ function nextGame(that){
 function countGame(count,score){
     this.count = count;
     this.score = score;
-    console.log(count_num_game);
+    //console.log(count_num_game);
     // เช็คการนับจำนวน เมื่อครบจะประกาศผลและคะแนน
     if(count_num_game >= this.count){
         if(this.count == this.score){
-            swal("สุดยอดเลย!", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success");
+            swal("สุดยอดเลย!", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
+                let url = "https://optimumpeptides.com/complate-score?score=";
+                window.location.href = url+this.score;
+            });
         }
         else{
-            swal("คุณทำข้อสอบหมดแล้ว!", "คุณได้คะแนนทั้งหมด : "+this.score, "success");
+            swal("คุณทำข้อสอบหมดแล้ว!", "คุณได้คะแนนทั้งหมด : "+this.score, "success").then(function(){
+                let url = "https://optimumpeptides.com/complate-score?score=";
+                window.location.href = url+this.score;
+            });
         }
         
     }
@@ -78,48 +84,78 @@ function changeCat(cat){
 // ------------------------------------------------------------------------------ //
 
 // ---------------------------------- ตัวช่วย ------------------------------------- //
+var check_total_help = [1,3]; // จำนวนเต็มในการใช้งานตัวช่วย
 
 // เฉลยคำตอบ
 $('#cheat-ans').on('click',function(){
     let show_ans = $('.game-zone .box.active');
-    showAnwser(show_ans);
+    showAnwser(show_ans,check_total_help[0],this);
 });
-
-function showAnwser(ele){
+function showAnwser(ele,num_help,that){
     this.ele =ele;
     let preques = $(this.ele).attr('data-ans');
     let preAns = $(this.ele).find('.button-group button');
 
-    for(i=0;i<=preAns.length;i++){
-        if($(preAns[i]).text() === preques){
-            $(preAns[i]).addClass('cheat');
+    // เช็คการนับจำนวน
+    check_help.number(num_help);
+    check_help.use();
+    check_help.check(that);
+
+    if(check_total_help[0] > 0){
+        for(i=0;i<=preAns.length;i++){
+            if($(preAns[i]).text() === preques){
+                $(preAns[i]).addClass('cheat');
+            }
         }
+        check_total_help[0] = check_total_help[0]-1; // ลบจำนวนการใช้งานตัวช่วย
     }
 }
 
 // ตัดข้อทิ้ง
 $('#cut-ans').on('click',function(){
     let cut_ans = $('.game-zone .box.active');
-    cutAnwser(cut_ans);
+    cutAnwser(cut_ans,check_total_help[1],this);
 });
-
-function cutAnwser(ele){
+function cutAnwser(ele,num_help,that){
     this.ele = ele;
     let preques = $(this.ele).attr('data-ans');
     let preAns = $(this.ele).find('.button-group button');
 
-    for(i=0;i<=preAns.length;i++){
-        if($(preAns[i]).text() !== preques){
-            $(preAns[i]).addClass('cut');
-            //console.log(preAns[i]);
-            
+    // เช็คการนับจำนวน
+    check_help.number(num_help);
+    check_help.use();
+    check_help.check(that);
+
+    if(check_total_help[1] > 0){
+        for(i=0;i<=preAns.length;i++){
+            if($(preAns[i]).text() !== preques){
+                $(preAns[i]).addClass('cut');
+            }
         }
+        check_total_help[1] = check_total_help[1]-1; // ลบจำนวนการใช้งานตัวช่วย
+        console.log("help"+check_total_help[1]);
     }
 
     let ele_cut = $(this.ele).find('.cut');
-    console.log(ele_cut);
     let min = 0;
     let max = 2;
     let ran = Math.floor((Math.random() * (max - min + 1)) + min);
-    $(ele_cut[ran]).text('');
+    $(ele_cut[ran]).text('');  
+}
+
+// ตรวจเช็คจำนวนตัวช่วย
+var check_help = {
+    number: function(number){
+        this.num = number;
+    },
+    use: function(){
+        this.num -=  1; // ใช้ตัวช่วย
+    },
+    check : function(ele){ //เช็คจำนวนที่เหลือ
+        this.ele = ele;
+        if(this.num <= 0){
+            $(this.ele).addClass('null');
+            swal("ตัวช่วยหมดแล้ว", "คุณได้ใช้ตัวช่วยหมดแล้ว", "warning");
+        }
+    }
 }

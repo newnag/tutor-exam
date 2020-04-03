@@ -52,7 +52,7 @@ $font-size:(
 
 @mixin button() {
     height: 100px;
-    width: 92%;
+    width: 100%;
     background-color: #fff;
     border: 1px solid green;
     border-radius: 20px;
@@ -198,7 +198,7 @@ section{
             .button-group{
                 display: grid;
                 grid-template-columns: repeat(2,48%);
-                grid-gap: 45px;
+                grid-gap: 4%;
                 grid-row-gap: 20px;
 
                 .next-button{
@@ -249,7 +249,7 @@ section{
     .button-group{
         display: grid;
         grid-template-columns: repeat(2,48%);
-        grid-gap: 2%;
+        grid-gap: 4%;
         width: 100%;
         padding: 0 20%;
 
@@ -259,6 +259,20 @@ section{
             i{
                 @include font-size(getFontsize('h3'));
                 margin-right: 2%;
+            }
+        }
+
+        .null{
+            background-color: gray;
+            color: #fff;
+            border: #525151;
+            animation: none;
+
+            &:hover{
+                transform: none;
+                background-color: gray;
+                color: #fff;
+                box-shadow: unset;
             }
         }
     }
