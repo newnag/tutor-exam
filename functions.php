@@ -40,7 +40,7 @@ function boxQuestion($post){
   $question = get_post_meta($post->ID,'question',true); // คำถาม
 
   echo '<span>กรอกคำถามตรงนี้</span> <br>';
-  echo '<textarea rows="4" cols="50" style="width:100%;" name="question"> '.$question.' </textarea> <br>';
+  echo '<textarea rows="4" cols="50" style="width:100%;" name="question">'.$question.'</textarea> <br>';
 }
 
 // ฟังก์ชั่นคำตอบ
@@ -51,7 +51,7 @@ function question_function($post){
 
   // คำตอบที่ถูก
   echo '<span>กรอกคำตอบที่ถูกต้องตรงนี้</span> <br>';
-  echo '<input style="width:100%;" type="text" name="corr_anwser" value='.$anwser_corr.'> <br>';
+  echo '<input style="width:100%;" type="text" name="corr_anwser" value="'.$anwser_corr.'"> <br>';
 }
 // ฟังก์ชั่นคำตอบอื่นๆ1
 function question_function1($post){
@@ -61,7 +61,7 @@ function question_function1($post){
 
   // คำตอบที่ถูก
   echo '<span>กรอกคำตอบอื่นๆ ที่ 1</span> <br>';
-  echo '<input style="width:100%;" type="text" name="anwser1" value='.$anwser1.'> <br>';
+  echo '<input style="width:100%;" type="text" name="anwser1" value="'.$anwser1.'"> <br>';
 }
 // ฟังก์ชั่นคำตอบอื่นๆ2
 function question_function2($post){
@@ -71,7 +71,7 @@ function question_function2($post){
 
   // คำตอบที่ถูก
   echo '<span>กรอกคำตอบอื่นๆ ที่ 2</span> <br>';
-  echo '<input style="width:100%;" type="text" name="anwser2" value='.$anwser2.'> <br>';
+  echo '<input style="width:100%;" type="text" name="anwser2" value="'.$anwser2.'"> <br>';
 }
 // ฟังก์ชั่นคำตอบอื่นๆ3
 function question_function3($post){
@@ -81,7 +81,7 @@ function question_function3($post){
 
   // คำตอบที่ถูก
   echo '<span>กรอกคำตอบอื่นๆ ที่ 3</span> <br>';
-  echo '<input style="width:100%;" type="text" name="anwser3" value='.$anwser3.'> <br>';
+  echo '<input style="width:100%;" type="text" name="anwser3" value="'.$anwser3.'"> <br>';
 }
 
 // เซฟคำตอบเข้า DB
