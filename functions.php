@@ -106,7 +106,7 @@ function save_anwser($post_id,$post){
   //ส่วนบันทึกค่า คำตอบที่ถูกต้อง
   $pub_ans_load = '';
   if(isset($_POST['corr_anwser'])){
-      $pub_ans_load = sanitize_text_field($_POST['corr_anwser']);
+      $pub_ans_load = $_POST['corr_anwser'];
   }else{
       $pub_ans_load = '';
   }
@@ -130,7 +130,7 @@ function save_anwser1($post_id,$post){
   //ส่วนบันทึกค่า คำตอบที่ถูกต้อง
   $pub_ans_load1 = '';
   if(isset($_POST['anwser1'])){
-      $pub_ans_load1 = sanitize_text_field($_POST['anwser1']);
+      $pub_ans_load1 = $_POST['anwser1'];
   }else{
       $pub_ans_load1 = '';
   }
@@ -154,7 +154,7 @@ function save_anwser2($post_id,$post){
   //ส่วนบันทึกค่า คำตอบที่ถูกต้อง
   $pub_ans_load2 = '';
   if(isset($_POST['anwser2'])){
-      $pub_ans_load2 = sanitize_text_field($_POST['anwser2']);
+      $pub_ans_load2 = $_POST['anwser2'];
   }else{
       $pub_ans_load2 = '';
   }
@@ -178,7 +178,7 @@ function save_anwser3($post_id,$post){
   //ส่วนบันทึกค่า คำตอบที่ถูกต้อง
   $pub_ans_load3 = '';
   if(isset($_POST['anwser3'])){
-      $pub_ans_load3 = sanitize_text_field($_POST['anwser3']);
+      $pub_ans_load3 = $_POST['anwser3'];
   }else{
       $pub_ans_load3 = '';
   }
@@ -203,7 +203,7 @@ function save_question($post_id,$post){
   //ส่วนบันทึกค่า คำถาม
   $pub_ques_load = '';
   if(isset($_POST['question'])){
-      $pub_ques_load = sanitize_text_field($_POST['question']);
+      $pub_ques_load = $_POST['question'];
   }else{
       $pub_ques_load = '';
   }
