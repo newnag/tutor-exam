@@ -3,21 +3,26 @@
 
 $current_user = wp_get_current_user();
 if ( 0 == $current_user->ID ) {
-    echo 'Not Login';
+    echo 'Dont Login';
 } else {
-    echo 'Login';
+   // echo 'Login Success <br>';
+    //echo "ID Login is ".$current_user->ID." ";
+
+    $score = $_REQUEST["score"];
+
+
+    $userid = $current_user->ID; // User ID ของผู้ใช้ปัจจุบัน
+    $insert = get_user_meta($userid,'score',true); // เรียกค่าscoreจาก DB ออกมา
+    //echo $insert;
+    
+    $updated = update_user_meta( $userid, 'score', $score+$insert); // เซฟข้อมูลลง DB
+    
+    // เช็คสถานะและส่งค่ากลับ ajax
+    if($updated === false){
+        echo 'Database Update False';
+    }
+    else{
+        echo 'Update Success';
+    }
 }
 
-$score = $_REQUEST["score"];
-
-get_header(); ?>
-
-<div class="container">
-    <div class="result-zone">
-        <div class="result">
-            <h1>Score = <?php echo $score ?></h1>
-        </div>
-    </div>
-</div>
-
-<?php get_footer(); ?>

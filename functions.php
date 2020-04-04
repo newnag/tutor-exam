@@ -242,3 +242,35 @@ function role_mod(){
   $mod_cap->add_cap( 'promote_users' );
 }
 add_action('init','role_mod');
+
+// ----------------------------------------------------------------------------------------- //
+
+// ปุ่มออกจากระบบ
+add_filter( 'wp_nav_menu_items', 'wti_loginout_menu_link', 10, 2 );
+function wti_loginout_menu_link( $items, $args ){
+  if ($args->menu == 'mainmenu') {
+    if (is_user_logged_in()) {
+        $items .= '<li class="right"><a href="'. wp_logout_url() .'">'. __("ออกจากระบบ") .'</a></li>';
+    } else {
+        $items .= '<li class="right"><a href="'. site_url() .'/login">'. __("เข้าสู่ระบบ") .'</a></li>';
+    }
+  }
+  return $items;
+}
+
+// เมนูข้อมูลสมาชิก
+add_filter( 'wp_nav_menu_items', 'mii_info_user_menu', 9, 2 );
+function mii_info_user_menu( $items, $args ) {
+    if ($args->menu == 'mainmenu') {
+        if (is_user_logged_in()) {
+            $items .= '<li class="right"><a href="'. site_url() .'/userinfo">'. __("ข้อมูลสมาชิก") .'</a></li>';
+        } 
+    }
+    return $items;
+}
+
+// เปลี่ยนเส้นทาง logout
+function redirect_to_custon_login(){
+  wp_redirect(site_url() . "/login");
+  exit();
+}

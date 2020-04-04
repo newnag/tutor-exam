@@ -46,19 +46,37 @@ function nextGame(that){
 function countGame(count,score){
     this.count = count;
     this.score = score;
+    this.Ajax = function(){
+        $.ajax({
+            type:'POST',
+            url: 'https://optimumpeptides.com/complate-score',
+            data: {'score':this.score},
+            success: function(data){
+                if(data === "Update Success"){
+                    swal("บันทึกสำเร็จ","ระบบทำการบันทึกคะแนนสำเร็จแล้วและจะพาคุณไปสู่หน้าหลัก","success").then(function(){
+                        window.location.href = "/";
+                    });
+                }
+                else if(data === "Dont Login"){
+                    swal("เกิดข้อผิดพลาด","คุณยังไม่ได้ทำการเข้าสู่ระบบ คะแนนจะไม่ทำการบันทึกผล","warning");
+                }
+                else{
+                    swal("เกิดข้อผิดพลาด","มีปัญหาเกี่ยวกับระบบ กรุณาติดต่อผู้ดูแล","error")
+                }
+            }
+        });
+    };
     //console.log(count_num_game);
     // เช็คการนับจำนวน เมื่อครบจะประกาศผลและคะแนน
     if(count_num_game >= this.count){
         if(this.count == this.score){
             swal("สุดยอดเลย!", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
-                let url = "https://optimumpeptides.com/complate-score?score=";
-                window.location.href = url+this.score;
+                this.Ajax();
             });
         }
         else{
             swal("คุณทำข้อสอบหมดแล้ว!", "คุณได้คะแนนทั้งหมด : "+this.score, "success").then(function(){
-                let url = "https://optimumpeptides.com/complate-score?score=";
-                window.location.href = url+this.score;
+                this.Ajax();
             });
         }
         
@@ -101,6 +119,7 @@ function showAnwser(ele,num_help,that){
     check_help.use();
     check_help.check(that);
 
+    // จำนวนตัวช่วยเหลือมากกว่า 1 จะทำงานในส่วนนี้
     if(check_total_help[0] > 0){
         for(i=0;i<=preAns.length;i++){
             if($(preAns[i]).text() === preques){
@@ -126,6 +145,7 @@ function cutAnwser(ele,num_help,that){
     check_help.use();
     check_help.check(that);
 
+    // จำนวนตัวช่วยเหลือมากกว่า 1 จะทำงานในส่วนนี้
     if(check_total_help[1] > 0){
         for(i=0;i<=preAns.length;i++){
             if($(preAns[i]).text() !== preques){
@@ -133,7 +153,6 @@ function cutAnwser(ele,num_help,that){
             }
         }
         check_total_help[1] = check_total_help[1]-1; // ลบจำนวนการใช้งานตัวช่วย
-        console.log("help"+check_total_help[1]);
     }
 
     let ele_cut = $(this.ele).find('.cut');

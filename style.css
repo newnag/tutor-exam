@@ -285,6 +285,33 @@ section .score h2 {
   margin: 1%;
 }
 
+section .user-box {
+  text-align: center;
+}
+
+section .user-box .user-info {
+  width: 60%;
+  margin: 0 auto;
+  background: #fff;
+  padding: 3%;
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+section .user-box .user-info .user-name, section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score {
+  margin: 1% 0;
+}
+
+section .user-box .user-info .user-name {
+  font-size: 22px;
+  font-size: 2.2rem;
+}
+
+section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score {
+  font-size: 20px;
+  font-size: 2rem;
+}
+
 .helper {
   display: -webkit-box;
   display: -ms-flexbox;

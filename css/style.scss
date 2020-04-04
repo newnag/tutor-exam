@@ -235,6 +235,29 @@ section{
             margin: 1%;
         }
     }
+
+    .user-box{
+        text-align: center;
+
+        .user-info{
+            width: 60%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3%;
+            border: 1px solid green;
+            border-radius: 10px;
+
+            .user-name,.user-role,.user-date,.user-score{
+                margin: 1% 0;
+            }
+            .user-name{
+                @include font-size(getFontsize('h1'));
+            }
+            .user-role,.user-date,.user-score{
+                @include font-size(getFontsize('h2'));
+            }
+        }
+    }
 }
 
 .helper{
