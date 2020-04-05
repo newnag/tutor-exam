@@ -258,6 +258,35 @@ section{
             }
         }
     }
+
+    .login-box{
+        width: 60%;
+        margin: 0 auto;
+        
+        .login-form{
+            display: grid;
+            grid-template-columns: 59% 39%;
+            grid-gap: 2%;
+
+            .input{
+                display: flex;
+                flex-direction: column;
+
+                input{
+                    padding: 2%;
+                }
+            }
+            .button{
+                display: flex;
+                justify-content: center;
+
+                button{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
 }
 
 .helper{

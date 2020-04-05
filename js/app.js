@@ -178,3 +178,48 @@ var check_help = {
         }
     }
 }
+
+// ------------------------------------------------------------------------------------ //
+
+// ----------------------------------- ระบบ login ------------------------------------- //
+class login {
+    constructor(user,pass){
+        this.user = user;
+        this.pass = pass;
+    }
+
+    send_login(){
+        var data_login = {"user":this.user,"pass":this.pass};
+
+        $.ajax({
+            type:'POST',
+            url:'https://optimumpeptides.com/verifylogin',
+            data:data_login,
+            success:function(data){
+                console.log(data);
+                if(data === "login success"){
+                    swal("เข้าสู่ระบบเรียบร้อย","กำลังทำการพาท่านกลับสู่หน้าหลัก กรุณารอสักครู่","success").then(function(){
+                        window.location.href = "/";
+                    });
+                }
+                else if(data === "false"){
+                    swal("เกิดข้อผิดพลาด","ท่านใส่ชื่อผู้ใช้หรือรหัสไม่ถูกต้อง","warning");
+                }
+                else{
+                    swal("เกิดข้อผิดพลาด","โปรดติดต่อผู้ดูแลระบบ","error");
+                }
+            },
+            error:function(error){
+                alert(error);
+            }
+        })
+    }
+}
+
+// เรียกใช้คลาส login
+$('.login-box .login-form .button button').on('click',function(){
+    let user = $(this).closest('.login-form').find('.input input[name="user"]').val();
+    let pass = $(this).closest('.login-form').find('.input input[name="pass"]').val();
+    let callLogin = new login(user,pass);
+    callLogin.send_login();
+});
