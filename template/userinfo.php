@@ -33,20 +33,43 @@
             </div>
         </div>
 
-        <div class="button-share">
-            <a href="https://www.facebook.com/dialog/feed?
-                    app_id=572717636677186&
-                    display=popup&
-                    link=https://optimumpeptides.com/&
-                    name=monkey-island&
-                    caption=เว็บติวเตอร์ฟรีข้อสอบ&
-                    description=เว็บฟรีข้อสอบ ทำติวเตอร์ฟรี ทดสอบระบบเว็บข้อสอบ&
-                    message=เพื่อนคุณทำได้รึป่าว คะแนนคุณคือ<?php echo $score; ?>&redirect_uri=https://optimumpeptides.com/" target="_blank">
-                <button>แชร์</button>
-            </a>
-        </div>
+        <div class="button-share" id="fb-share" onclick="sharefacebook()"><button>แชร์</button></div>
+        
     </div>
 </section>
+
+<script>
+function sharefacebook(){ 
+    FB.ui({
+        method: 'feed',
+        link: 'https://optimumpeptides.com/',
+        name: "ShowTest",
+        message: "Posted using FB.ui and picture.",
+        display: 'iframe',
+        caption: "Caption",
+        description: "Description field",
+        actions:{name:"Test Post"},
+
+    }, function(response){
+        if (response && !response.error_message) {
+            alert('Posting completed.');
+        } else {
+            alert('Error while posting.');
+        }
+    });
+}
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '572717636677186',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v6.0'
+    });
+  };
+</script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 
 
 <?php get_footer(); ?>

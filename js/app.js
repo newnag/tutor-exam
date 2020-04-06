@@ -196,7 +196,7 @@ class login {
             url:'https://optimumpeptides.com/verifylogin',
             data:data_login,
             success:function(data){
-                console.log(data);
+                //console.log(data);
                 if(data === "login success"){
                     swal("เข้าสู่ระบบเรียบร้อย","กำลังทำการพาท่านกลับสู่หน้าหลัก กรุณารอสักครู่","success").then(function(){
                         window.location.href = "/";
@@ -223,3 +223,67 @@ $('.login-box .login-form .button button').on('click',function(){
     let callLogin = new login(user,pass);
     callLogin.send_login();
 });
+
+// ------------------------------------------------------------------------------------------------- //
+
+// --------------------------------------- ระบบสมัครสมาชิก ------------------------------------------- //
+class register{
+    constructor(user,pass,conpass,email,age,educate){
+        this.user = user;
+        this.pass = pass;
+        this.conpass = conpass;
+        this.email = email;
+        this.age = age;
+        this.educate = educate;
+    }
+
+    getRegister(){
+        var register_data = {
+            "user":this.user,
+            "pass":this.pass,
+            "conpass":this.conpass,
+            "email":this.email,
+            "age":this.age,
+            "educate":this.educate
+        };
+
+        $.ajax({
+            type:'POST',
+            url:'https://optimumpeptides.com/verifyregister/',
+            data:register_data,
+            dataType:'json',
+            success:function(data){
+                console.log(data);
+                data.forEach(element => {
+                    if(element === "success"){
+                        swal("สมัครเสร็จสิ้น","ลงทะเบียนเสร็จสมบูรณ์แล้ว กด ok เพื่อกลับสู่หน้าเข้าสู่ระบบ","success").then(function(){
+                            window.location.href = "/login";
+                        });
+                    }
+                    else if(element === "nodata"){
+                        swal("เกิดข้อผิดพลาด","แจ้งผู้ดูแลระบบเพื่อแก้ไขปัญหา","error");
+                    }
+                    else{
+                        swal("มีข้อผิดพลาดในการสมัคร","กรุณาตรวจเช็คการสมัคร","warning");
+                    }
+                });
+            },
+            error:function(error){
+                alert("error: "+error);
+            }
+        })
+    }
+}
+
+// เรียกใช้คลาส register
+$('.register-box .register-form .button #regis').on('click',function(){
+    let user = $(this).closest('.register-form').find('.input #user').val();
+    let pass = $(this).closest('.register-form').find('.input #pass').val();
+    let passcon = $(this).closest('.register-form').find('.input #pass-con').val();
+    let email = $(this).closest('.register-form').find('.input #email').val();
+    let age = $(this).closest('.register-form').find('.input #age').val();
+    let edu = $(this).closest('.register-form').find('.select select').val();
+
+    let regisnew = new register(user,pass,passcon,email,age,edu);
+    regisnew.getRegister();
+})

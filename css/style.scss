@@ -34,6 +34,9 @@ body{
 img{
     max-width: 100%;
 }
+input:focus,select:focus,button:focus{
+    outline: none;
+}
 
 // ------------------------ function ------------------------- //
 $font-size:(
@@ -283,6 +286,49 @@ section{
                 button{
                     width: 100%;
                     height: 100%;
+                }
+            }
+        }
+    }
+
+    .register-box{
+        width: 50%;
+        margin: 0 auto;
+        background: #e0e0e0;
+        border-radius: 5px;
+
+        .register-form{
+            padding: 3% 10%;
+
+            .head-text{
+                text-align: center;
+                @include font-size(getFontsize('h1'));
+            }
+            .input{
+                input{
+                    width: 100%;
+                    padding: 2%;
+                    margin: 1% 0;
+                    border: 1px solid green;
+                    border-radius: 20px;
+                }
+            }
+            .select{
+                select{
+                    width: 100%;
+                    padding: 2%;
+                    margin: 1% 0;
+                    border: 1px solid green;
+                    border-radius: 20px;
+                }
+            }
+            .button{
+                text-align: center;
+
+                button{
+                    @include button();
+                    width: 100px;
+                    height: 50px;
                 }
             }
         }

@@ -253,6 +253,7 @@ function wti_loginout_menu_link( $items, $args ){
         $items .= '<li class="right"><a href="'. wp_logout_url() .'">'. __("ออกจากระบบ") .'</a></li>';
     } else {
         $items .= '<li class="right"><a href="'. site_url() .'/login">'. __("เข้าสู่ระบบ") .'</a></li>';
+        $items .= '<li class="right"><a href="'. site_url() .'/register">'. __("สมัครสมาชิก") .'</a></li>';
     }
   }
   return $items;
@@ -274,3 +275,4 @@ function redirect_to_custon_login(){
   wp_redirect(site_url() . "/login");
   exit();
 }
+add_action("wp_logout","redirect_to_custon_login");
