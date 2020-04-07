@@ -9,6 +9,8 @@
     */
 
     $score = get_user_meta($current_user->ID,'score',true);
+    $time_min = get_user_meta($current_user->ID,'time_min',true); // ดึงค่านาที
+    $time_sec = get_user_meta($current_user->ID,'time_sec',true); // ดึงค่าวินาที
 
     get_header();
 ?>
@@ -31,9 +33,22 @@
                 ?>
                 </h2>
             </div>
+            <div class="time-use">
+                <h2>เวลาที่น้อยที่สุดในการทำข้อสอบ</h2>
+                <h2>
+                    <?php 
+                        if($time_min != null && $time_sec != null){
+                            echo $time_min." : ".$time_sec ;
+                        }
+                        else{
+                            echo "คุณยังไม่มีเวลาบันทึก" ;
+                        }
+                    ?>
+                </h2>
+            </div>
         </div>
 
-        <div class="button-share" id="fb-share" onclick="sharefacebook()"><button>แชร์</button></div>
+        <!-- <div class="button-share" id="fb-share" onclick="sharefacebook()"><button>แชร์</button></div> -->
         
     </div>
 </section>

@@ -76,9 +76,16 @@ get_header(); ?>
             <?php endwhile; ?>
         </div>
 
-        <div class="score">
-            <h1>คะแนนที่ได้</h1>
-            <h2>0</h2>
+        <div class="game-score">
+            <div class="total-game">จำนวนข้อ <span id="min-game">0</span>/<span id="max-game"></span></div>
+            <div class="score">
+                <h1>คะแนนที่ได้</h1>
+                <h2>0</h2>
+            </div>
+        </div>
+
+        <div class="timer">
+            <label id="time-min">00</label>:<label id="time-sec">00</label>
         </div>
     </section>
 

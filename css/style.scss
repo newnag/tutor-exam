@@ -229,13 +229,35 @@ section{
         }
     }
 
-    .score{
+    .game-score{
         display: flex;
         justify-content: center;
         align-items: center;
 
-        h2{
-            margin: 1%;
+        .total-game{
+            margin: 0 2%;
+            @include font-size(getFontsize('h1'));
+        }
+        .score{
+            display: flex;
+            justify-content: space-evenly;
+            width: 15%;
+
+            h2{
+                margin: 1%;
+                @include font-size(getFontsize('h1'));
+            }
+        }
+    }
+
+    
+
+    .timer{
+        text-align: center;
+        margin: 2% 0;
+
+        label{
+            @include font-size(getFontsize('h1'))
         }
     }
 
@@ -250,13 +272,13 @@ section{
             border: 1px solid green;
             border-radius: 10px;
 
-            .user-name,.user-role,.user-date,.user-score{
+            .user-name,.user-role,.user-date,.user-score,.time-use{
                 margin: 1% 0;
             }
             .user-name{
                 @include font-size(getFontsize('h1'));
             }
-            .user-role,.user-date,.user-score{
+            .user-role,.user-date,.user-score,.time-use{
                 @include font-size(getFontsize('h2'));
             }
         }

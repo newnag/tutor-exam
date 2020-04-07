@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $('.game-zone .box:first-child').addClass('active');
+    $('.game-zone .box:first-child').addClass('active'); // เซ็ตให้ตัวแรกมีคลาส active
+    $('#max-game').text($('.game-zone .box').length); // เซ็ตจำนวนข้อทั้งหมดที่ต้องทำ
 });
 
 // ------------------------------- กดปุ่มตอบคำถาม ----------------------------- //
@@ -28,6 +29,7 @@ function check_anwser(that,anw,corr,ele_length){
     }
 
     count_num_game++;
+    $('#min-game').text(count_num_game); // เพิ่มจำนวนข้อที่ทำไปแล้ว
     nextGame(that);
     countGame(this.ele,score);
     $('.score h2').text(score);
@@ -46,11 +48,17 @@ function nextGame(that){
 function countGame(count,score){
     this.count = count;
     this.score = score;
+    this.minTime = $('#time-min').text();
+    this.secTime = $('#time-sec').text();
     this.Ajax = function(){
         $.ajax({
             type:'POST',
             url: 'https://optimumpeptides.com/complate-score',
-            data: {'score':this.score},
+            data:   {
+                        'score':this.score,
+                        'min':this.minTime,
+                        'sec':this.secTime
+                    },
             success: function(data){
                 if(data === "Update Success"){
                     swal("บันทึกสำเร็จ","ระบบทำการบันทึกคะแนนสำเร็จแล้วและจะพาคุณไปสู่หน้าหลัก","success").then(function(){
@@ -63,6 +71,9 @@ function countGame(count,score){
                 else{
                     swal("เกิดข้อผิดพลาด","มีปัญหาเกี่ยวกับระบบ กรุณาติดต่อผู้ดูแล","error")
                 }
+            },
+            beforeSend:function(){
+                swal("กำลังดำเนินการบันทึกข้อมูล","กรุณาอย่าปิดหน้าหรือรีเฟรชหน้าในขณะบันทึกข้อมูล","info",{button:false});
             }
         });
     };
@@ -70,16 +81,35 @@ function countGame(count,score){
     // เช็คการนับจำนวน เมื่อครบจะประกาศผลและคะแนน
     if(count_num_game >= this.count){
         if(this.count == this.score){
-            swal("สุดยอดเลย!", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
+            swal("สุดยอดคุณเก่งมาก!", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
                 this.Ajax();
             });
         }
-        else{
-            swal("คุณทำข้อสอบหมดแล้ว!", "คุณได้คะแนนทั้งหมด : "+this.score, "success").then(function(){
+        else if((this.score/this.count)*100 >= 80){
+            swal("คุณเก่งมาก", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
                 this.Ajax();
             });
         }
-        
+        else if((this.score/this.count)*100 >= 50){
+            swal("น้อยไปหน่อยคุณต้องพยามกว่านี้นะ", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
+                this.Ajax();
+            });
+        }
+        else if((this.score/this.count)*100 < 50){
+            swal("ไม่ผ่านคุณต้องพยายามมากกว่านี้", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
+                this.Ajax();
+            });
+        }
+        else if((this.score/this.count)*100 < 20){
+            swal("แย่จริงๆลิงยังทำได้มากกว่าคุณเลย", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
+                this.Ajax();
+            });
+        }
+        else if((this.score/this.count)*100 == 0){
+            swal("ตั้งใจหน่อยอย่าทำเป็นเล่นสิ", "คุณทำข้อสอบผ่านทั้งหมดด้วยคะแนน : "+this.score, "success").then(function(){
+                this.Ajax();
+            });
+        } 
     }
 }
 
@@ -253,23 +283,23 @@ class register{
             data:register_data,
             dataType:'json',
             success:function(data){
-                console.log(data);
-                data.forEach(element => {
-                    if(element === "success"){
+                for(var key in data){
+                    console.log(data[key]); 
+                    if(data[key] === "success"){
                         swal("สมัครเสร็จสิ้น","ลงทะเบียนเสร็จสมบูรณ์แล้ว กด ok เพื่อกลับสู่หน้าเข้าสู่ระบบ","success").then(function(){
                             window.location.href = "/login";
                         });
                     }
-                    else if(element === "nodata"){
+                    else if(data[key] === "nodata"){
                         swal("เกิดข้อผิดพลาด","แจ้งผู้ดูแลระบบเพื่อแก้ไขปัญหา","error");
                     }
                     else{
-                        swal("มีข้อผิดพลาดในการสมัคร","กรุณาตรวจเช็คการสมัคร","warning");
+                        swal("มีข้อผิดพลาดในการสมัคร",data[key],"warning");
                     }
-                });
+                }
             },
             error:function(error){
-                alert("error: "+error);
+                swal("เกิดข้อผิดพลาด","แจ้งผู้ดูแลระบบเพื่อแก้ไขปัญหา","error");
             }
         })
     }
@@ -287,3 +317,26 @@ $('.register-box .register-form .button #regis').on('click',function(){
     let regisnew = new register(user,pass,passcon,email,age,edu);
     regisnew.getRegister();
 })
+
+// ------------------------------------------------------------------------------------------ //
+
+// ------------------------------------ ระบบนับเวลาสอบ ----------------------------------------- //
+var minutesLabel = document.getElementById("time-min");
+var secondsLabel = document.getElementById("time-sec");
+var totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}

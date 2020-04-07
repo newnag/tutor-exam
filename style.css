@@ -273,7 +273,7 @@ section .game-zone .active {
   display: flex;
 }
 
-section .score {
+section .game-score {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -285,8 +285,36 @@ section .score {
           align-items: center;
 }
 
-section .score h2 {
+section .game-score .total-game {
+  margin: 0 2%;
+  font-size: 22px;
+  font-size: 2.2rem;
+}
+
+section .game-score .score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 15%;
+}
+
+section .game-score .score h2 {
   margin: 1%;
+  font-size: 22px;
+  font-size: 2.2rem;
+}
+
+section .timer {
+  text-align: center;
+  margin: 2% 0;
+}
+
+section .timer label {
+  font-size: 22px;
+  font-size: 2.2rem;
 }
 
 section .user-box {
@@ -302,7 +330,7 @@ section .user-box .user-info {
   border-radius: 10px;
 }
 
-section .user-box .user-info .user-name, section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score {
+section .user-box .user-info .user-name, section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score, section .user-box .user-info .time-use {
   margin: 1% 0;
 }
 
@@ -311,7 +339,7 @@ section .user-box .user-info .user-name {
   font-size: 2.2rem;
 }
 
-section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score {
+section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score, section .user-box .user-info .time-use {
   font-size: 20px;
   font-size: 2rem;
 }
