@@ -29,7 +29,9 @@ html{
 }
 body{
     background-color: $background_main;
-    font-size: 1.4em
+    font-size: 1.4em;
+    position: relative;
+    min-height: 100vh;
 }
 img{
     max-width: 100%;
@@ -101,6 +103,11 @@ header{
         .logo{
             figure{
                 width: 80px;
+
+                @media screen and (max-width:$display-1) {
+                    width: 60px;
+                }
+
                 img{
                     max-width: 100%;
                 }
@@ -113,6 +120,10 @@ header{
             margin: 0 2%;
 
             @include font-size(getFontsize('h1'));
+
+            @media screen and (max-width:$display-1) {
+                @include font-size(getFontsize('h3'));
+            }
         }
     }
 }
@@ -125,6 +136,10 @@ nav{
     .nav-menu{
         display: flex;
         justify-content: center;
+
+        @media screen and (max-width:$display-1) {
+            display: none;
+        }
 
         li{
             list-style: none;
@@ -144,12 +159,60 @@ nav{
             }
         }
     }
+
+    .mobile-menu{
+        display: none;
+        position: relative;
+
+        @media screen and (max-width:$display-1) {
+            display: block;
+            text-align: center;
+        }
+
+        span{
+            font-size: 1.2em;
+        }
+
+        .nav-menu-mobile{
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 3;
+
+            li{
+                list-style: none;
+                margin: 3% 0;
+                @include font-size(getFontsize('h1'));
+                
+                a{
+                    text-decoration: none;
+                    color: $text_color;
+                }
+            }
+        }
+        
+        .close-button{
+            display: none;
+            position: fixed;
+            bottom: 5%;
+            left: 45%;
+            z-index: 3;
+
+            i{
+                font-size: 45px;
+            }
+        }
+    }
 }
 
 article{
     .content{
         background: $background_content;
         height: fit-content;
+        padding: 0 3%;
     }
 }
 
@@ -158,6 +221,13 @@ section{
         display: flex;
         justify-content: center;
         margin: 2% 0;
+
+        @media screen and (max-width:$display-1) {
+            display: grid;
+            grid-template-columns: repeat(2,49%);
+            grid-gap: 1%;
+            grid-row-gap: 10px;
+        }
 
         .next-button{
             margin: 0 2%;
@@ -176,12 +246,21 @@ section{
                     transition: all .2s;
                 }
             }
+
+            @media screen and (max-width:$display-1) {
+                width: 100%;
+                margin: unset;
+            }
         }
     }
 
     .game-zone{
         width: 60%;
         margin: 0 auto;
+
+        @media screen and (max-width:$display-1) {
+            width: 95%;
+        }
 
         .box{
             display: none;
@@ -234,14 +313,28 @@ section{
         justify-content: center;
         align-items: center;
 
+        @media screen and (max-width:$display-1) {
+            flex-direction: column;
+            margin: 5% 0;
+        }
+
         .total-game{
             margin: 0 2%;
             @include font-size(getFontsize('h1'));
+
+            @media screen and (max-width:$display-1) {
+                width: 50%;
+                text-align: center;
+            }
         }
         .score{
             display: flex;
             justify-content: space-evenly;
             width: 15%;
+
+            @media screen and (max-width:$display-1) {
+                width: 50%;
+            }
 
             h2{
                 margin: 1%;
@@ -249,8 +342,6 @@ section{
             }
         }
     }
-
-    
 
     .timer{
         text-align: center;
@@ -373,6 +464,11 @@ section{
         width: 100%;
         padding: 0 20%;
 
+        @media screen and (max-width:$display-1){
+            margin-bottom: 10%;
+            padding: 0 3%;
+        }
+
         .help{
             @include button();
             width: 100%;
@@ -395,5 +491,20 @@ section{
                 box-shadow: unset;
             }
         }
+    }
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+
+    .footer{
+        background-color: #fff;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

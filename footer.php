@@ -1,5 +1,7 @@
 <footer>
-    <p>footer</p>
+    <div class="footer">
+        <p>Powerby MonkeyIsland Team / Copyright MonkeyIsland</p>
+    </div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

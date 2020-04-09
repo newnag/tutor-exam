@@ -18,7 +18,7 @@
         </div>
 
         <div class="text-head">
-            <h1>Tutor Web Test Exam</h1>
+            <h1>Monkey Island</h1>
         </div>
     </div>
 </header>
@@ -36,8 +36,20 @@
         wp_nav_menu( array(
             'menu' => 'mainmenu',
             'menu_class' => 'nav-menu',
-            
         ) );
     ?>
+
+    <div class="mobile-menu">
+        <span id="menu-mobile">Menu</span>
+
+        <?php 
+            wp_nav_menu( array(
+                'menu' => 'mainmenu-mobile',
+                'menu_class' => 'nav-menu-mobile',
+            ) );
+        ?>
+
+        <div class="close-button"><i class="fas fa-times"></i></div>
+    </div>
 </nav>
 

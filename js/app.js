@@ -113,9 +113,9 @@ function countGame(count,score){
     }
 }
 
-// ------------------------------------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------------ //
 
-// ---------------------------- กดปุ่มเลือกหมวดหมู่ย่อย ----------------------------- //
+// ------------------------------------------------- กดปุ่มเลือกหมวดหมู่ย่อย --------------------------------------------- //
 $('.subject button').click(function(){
     let cat = $(this).attr('data-cat');
     changeCat(cat);
@@ -125,13 +125,13 @@ function changeCat(cat){
     this.cat = cat;
     let url = window.location.href;
     url = url+this.cat;
-    console.log(url);
+    //console.log(url);
     window.location.href = url;
 }
 
-// ------------------------------------------------------------------------------ //
+// ------------------------------------------------------------------------------------------------------------------ //
 
-// ---------------------------------- ตัวช่วย ------------------------------------- //
+// ------------------------------------------------------ ตัวช่วย ----------------------------------------------------- //
 var check_total_help = [1,3]; // จำนวนเต็มในการใช้งานตัวช่วย
 
 // เฉลยคำตอบ
@@ -318,25 +318,40 @@ $('.register-box .register-form .button #regis').on('click',function(){
     regisnew.getRegister();
 })
 
-// ------------------------------------------------------------------------------------------ //
+// --------------------------------------------------------------------------------------------------------- //
 
-// ------------------------------------ ระบบนับเวลาสอบ ----------------------------------------- //
-var minutesLabel = document.getElementById("time-min");
-var secondsLabel = document.getElementById("time-sec");
-var totalSeconds = 0;
-setInterval(setTime, 1000);
-
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+// -------------------------------------------- ระบบนับเวลาสอบ ---------------------------------------------- //
+if($('.game-zone').is(":visible")){
+    var minutesLabel = document.getElementById("time-min");
+    var secondsLabel = document.getElementById("time-sec");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
+    
+    function setTime() {
+      ++totalSeconds;
+      secondsLabel.innerHTML = pad(totalSeconds % 60);
+      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+    
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
 }
 
-function pad(val) {
-  var valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}
+// -------------------------------------------------------------------------------------------------------- //
+
+// ---------------------------------------------- ปุ่มกดเมนูมือถือ -------------------------------------------- //
+$('.mobile-menu #menu-mobile').on('click',function(){
+    console.log(111);
+    $(this).next().children().slideDown();
+    $(this).next().next().show();
+});
+$('.close-button').on('click',function(){
+    $(this).prev().children().slideUp();
+    $(this).hide();
+});
