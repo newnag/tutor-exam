@@ -1,7 +1,7 @@
 <?php 
 global $post;
 
-$link .= urldecode($_SERVER['REQUEST_URI']);
+$link = urldecode($_SERVER['REQUEST_URI']);
 $path = explode('/',$link);
 // $path[3] ตือตำแหน่งที่ใช้อ้างอิงหมวดหมู่ย่อย
 $cate = $path[3];
