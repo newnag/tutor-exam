@@ -449,8 +449,20 @@ section .user-box .user-info {
   border-radius: 10px;
 }
 
+@media screen and (max-width: 480px) {
+  section .user-box .user-info {
+    width: 95%;
+  }
+}
+
 section .user-box .user-info .user-name, section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score, section .user-box .user-info .time-use {
   margin: 1% 0;
+}
+
+@media screen and (max-width: 480px) {
+  section .user-box .user-info .user-name, section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score, section .user-box .user-info .time-use {
+    margin: 5% 0;
+  }
 }
 
 section .user-box .user-info .user-name {
@@ -458,14 +470,34 @@ section .user-box .user-info .user-name {
   font-size: 2.2rem;
 }
 
+@media screen and (max-width: 480px) {
+  section .user-box .user-info .user-name {
+    font-size: 20px;
+    font-size: 2rem;
+  }
+}
+
 section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score, section .user-box .user-info .time-use {
   font-size: 20px;
   font-size: 2rem;
 }
 
+@media screen and (max-width: 480px) {
+  section .user-box .user-info .user-role, section .user-box .user-info .user-date, section .user-box .user-info .user-score, section .user-box .user-info .time-use {
+    font-size: 14px;
+    font-size: 1.4rem;
+  }
+}
+
 section .login-box {
   width: 60%;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+  section .login-box {
+    width: 90%;
+  }
 }
 
 section .login-box .login-form {
@@ -511,8 +543,20 @@ section .register-box {
   border-radius: 5px;
 }
 
+@media screen and (max-width: 480px) {
+  section .register-box {
+    width: 95%;
+  }
+}
+
 section .register-box .register-form {
   padding: 3% 10%;
+}
+
+@media screen and (max-width: 480px) {
+  section .register-box .register-form {
+    padding: 3% 5%;
+  }
 }
 
 section .register-box .register-form .head-text {
@@ -578,7 +622,6 @@ section .register-box .register-form .button button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 2% 0;
 }
 
 .helper h2 {
@@ -592,7 +635,7 @@ section .register-box .register-form .button button {
       grid-template-columns: repeat(2, 48%);
   grid-gap: 4%;
   width: 100%;
-  padding: 0 20%;
+  padding: 2% 20%;
 }
 
 @media screen and (max-width: 480px) {

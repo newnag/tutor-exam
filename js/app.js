@@ -1,6 +1,9 @@
 $(document).ready(function(){
     $('.game-zone .box:first-child').addClass('active'); // เซ็ตให้ตัวแรกมีคลาส active
     $('#max-game').text($('.game-zone .box').length); // เซ็ตจำนวนข้อทั้งหมดที่ต้องทำ
+    if($('.game-zone').is(":visible")){ // ให้วิชาหายเมื่อคำถามขึ้นแล้ว
+        $('.subject').hide();
+    }
 });
 
 // ------------------------------- กดปุ่มตอบคำถาม ----------------------------- //

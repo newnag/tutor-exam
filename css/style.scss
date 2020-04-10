@@ -363,14 +363,30 @@ section{
             border: 1px solid green;
             border-radius: 10px;
 
+            @media screen and (max-width:$display-1) {
+                width: 95%;
+            }
+
             .user-name,.user-role,.user-date,.user-score,.time-use{
                 margin: 1% 0;
+
+                @media screen and (max-width:$display-1) {
+                    margin: 5% 0;
+                }
             }
             .user-name{
                 @include font-size(getFontsize('h1'));
+
+                @media screen and (max-width:$display-1) {
+                    @include font-size(getFontsize('h2'));
+                }
             }
             .user-role,.user-date,.user-score,.time-use{
                 @include font-size(getFontsize('h2'));
+
+                @media screen and (max-width:$display-1) {
+                    @include font-size(getFontsize('p'));
+                }
             }
         }
     }
@@ -378,6 +394,10 @@ section{
     .login-box{
         width: 60%;
         margin: 0 auto;
+
+        @media screen and (max-width:$display-1) {
+            width: 90%;
+        }
         
         .login-form{
             display: grid;
@@ -410,8 +430,16 @@ section{
         background: #e0e0e0;
         border-radius: 5px;
 
+        @media screen and (max-width:$display-1) {
+            width: 95%;
+        }
+
         .register-form{
             padding: 3% 10%;
+
+            @media screen and (max-width:$display-1) {
+                padding: 3% 5%;
+            }
 
             .head-text{
                 text-align: center;
@@ -452,7 +480,7 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2% 0;
+    //margin: 2% 0;
 
     h2{
         margin: 1% 0;
@@ -462,7 +490,7 @@ section{
         grid-template-columns: repeat(2,48%);
         grid-gap: 4%;
         width: 100%;
-        padding: 0 20%;
+        padding: 2% 20%;
 
         @media screen and (max-width:$display-1){
             margin-bottom: 10%;

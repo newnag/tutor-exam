@@ -24,8 +24,13 @@ get_header(); ?>
 <section>
     <div class="subject">
         <?php
-            foreach($term_name as $value) {
-                echo '<button class="next-button" data-cat="'.urldecode($value).'">'.urldecode($value).'</button>';
+            if($term_name != null){
+                foreach($term_name as $value) {
+                    echo '<button class="next-button" data-cat="'.urldecode($value).'">'.urldecode($value).'</button>';
+                }
+            }
+            else{
+                echo '<h2>ยังไม่มีข้อสอบในขณะนี้ แจ้งผู้ดูแลเพื่อให้ทำการเพิ่มข้อสอบในส่วนนี้</h2>';
             }
         ?>
     </div>
