@@ -227,7 +227,20 @@ section{
     }
 
     .edu-level{
-        
+        text-align: center;
+        display: none;
+
+        .list-level{
+            a{
+                button{
+                    width: 100px;
+                    height: 50px;
+                    border: 1px solid green;
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     .subject{

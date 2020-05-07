@@ -19,8 +19,8 @@ get_header(); ?>
 
             <div class="edu-level">
                 <div class="list-level">
-                    <button data-cat="<?php echo $categories[2]->name ?>"><?php echo $categories[2]->name ?></button>
-                    <button data-cat="<?php echo $categories[3]->name ?>"><?php echo $categories[3]->name ?></button>
+                    <a href="<?php echo site_url().'/category/'.$categories[2]->name ?>"><button><?php echo $categories[2]->name ?></button></a>
+                    <a href="<?php echo site_url().'/category'.$categories[3]->name ?>"><button><?php echo $categories[3]->name ?></button></a>
                 </div>
             </div>
         </section>
