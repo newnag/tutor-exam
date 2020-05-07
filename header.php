@@ -39,7 +39,7 @@
         ) );
     ?>
 
-    <div class="mobile-menu">
+    <!-- <div class="mobile-menu">
         <span id="menu-mobile">Menu</span>
 
         <?php 
@@ -50,6 +50,6 @@
         ?>
 
         <div class="close-button"><i class="fas fa-times"></i></div>
-    </div>
+    </div> -->
 </nav>
 

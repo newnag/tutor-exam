@@ -137,10 +137,6 @@ nav{
         display: flex;
         justify-content: center;
 
-        @media screen and (max-width:$display-1) {
-            display: none;
-        }
-
         li{
             list-style: none;
             margin: 0 2%;
@@ -160,52 +156,52 @@ nav{
         }
     }
 
-    .mobile-menu{
-        display: none;
-        position: relative;
+    // .mobile-menu{
+    //     display: none;
+    //     position: relative;
 
-        @media screen and (max-width:$display-1) {
-            display: block;
-            text-align: center;
-        }
+    //     @media screen and (max-width:$display-1) {
+    //         display: block;
+    //         text-align: center;
+    //     }
 
-        span{
-            font-size: 1.2em;
-        }
+    //     span{
+    //         font-size: 1.2em;
+    //     }
 
-        .nav-menu-mobile{
-            display: none;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            z-index: 3;
+    //     .nav-menu-mobile{
+    //         display: none;
+    //         position: fixed;
+    //         top: 0;
+    //         width: 100%;
+    //         height: 100%;
+    //         background: #fff;
+    //         z-index: 3;
 
-            li{
-                list-style: none;
-                margin: 3% 0;
-                @include font-size(getFontsize('h1'));
+    //         li{
+    //             list-style: none;
+    //             margin: 3% 0;
+    //             @include font-size(getFontsize('h1'));
                 
-                a{
-                    text-decoration: none;
-                    color: $text_color;
-                }
-            }
-        }
+    //             a{
+    //                 text-decoration: none;
+    //                 color: $text_color;
+    //             }
+    //         }
+    //     }
         
-        .close-button{
-            display: none;
-            position: fixed;
-            bottom: 5%;
-            left: 45%;
-            z-index: 3;
+    //     .close-button{
+    //         display: none;
+    //         position: fixed;
+    //         bottom: 5%;
+    //         left: 45%;
+    //         z-index: 3;
 
-            i{
-                font-size: 45px;
-            }
-        }
-    }
+    //         i{
+    //             font-size: 45px;
+    //         }
+    //     }
+    // }
 }
 
 article{
@@ -217,6 +213,23 @@ article{
 }
 
 section{
+    .game-start{
+        text-align: center;
+        margin: 3% 0;
+
+        button{
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 1px solid green;
+        }
+    }
+
+    .edu-level{
+        
+    }
+
     .subject{
         display: flex;
         justify-content: center;

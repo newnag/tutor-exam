@@ -248,7 +248,7 @@ add_action('init','role_mod');
 // ปุ่มออกจากระบบ
 add_filter( 'wp_nav_menu_items', 'wti_loginout_menu_link', 10, 2 );
 function wti_loginout_menu_link( $items, $args ){
-  if ($args->menu == 'mainmenu' || $args->menu == 'mainmenu-mobile') {
+  if ($args->menu == 'mainmenu') {
     if (is_user_logged_in()) {
         $items .= '<li class="right"><a href="'. wp_logout_url() .'">'. __("ออกจากระบบ") .'</a></li>';
     } else {
@@ -262,7 +262,7 @@ function wti_loginout_menu_link( $items, $args ){
 // เมนูข้อมูลสมาชิก
 add_filter( 'wp_nav_menu_items', 'mii_info_user_menu', 9, 2 );
 function mii_info_user_menu( $items, $args ) {
-    if ($args->menu == 'mainmenu' || $args->menu == 'mainmenu-mobile') {
+    if ($args->menu == 'mainmenu') {
         if (is_user_logged_in()) {
             $items .= '<li class="right"><a href="'. site_url() .'/userinfo">'. __("ข้อมูลสมาชิก") .'</a></li>';
         } 
