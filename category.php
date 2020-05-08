@@ -35,6 +35,12 @@ get_header(); ?>
             }
         ?>
     </div>
+
+    <div class="mode-game">
+        <button data-mode="easy">ธรรมดา</button>
+        <button data-mode="sp">พิเศษ</button>
+        <button data-mode="rank">แรงค์กิ้ง</button>
+    </div>
 </section>
 
 <?php
