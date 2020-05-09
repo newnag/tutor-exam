@@ -1,18 +1,52 @@
 $(document).ready(function(){
     $('.game-zone .box:first-child').addClass('active'); // เซ็ตให้ตัวแรกมีคลาส active
-    $('#max-game').text($('.game-zone .box').length); // เซ็ตจำนวนข้อทั้งหมดที่ต้องทำ
+    if($('#gamezone').attr('data-gamemode') === "easy"){
+        $('#max-game').text($('.game-zone-ez .box').length); // เซ็ตจำนวนข้อทั้งหมดที่ต้องทำ
+    }
+    else if($('#gamezone').attr('data-gamemode') === "sp"){
+        $('#max-game').text($('.game-zone-sp .box').length); // เซ็ตจำนวนข้อทั้งหมดที่ต้องทำ
+    }
+    else if($('#gamezone').attr('data-gamemode') === "rank"){
+        $('#max-game').text($('.game-zone-rank .box').length); // เซ็ตจำนวนข้อทั้งหมดที่ต้องทำ
+    }
+    $('.mode-game button').on('click',function(){
+        var mode = $(this).attr('data-mode');
+        $(this).parent().hide();
+
+        if(mode === 'rank' || mode === 'sp'){
+            let url = window.location.href;
+            window.location.href = url+"?mode="+mode;
+        }
+        else{
+            $('.subject').css("display","flex");
+        }   
+    }); //เลือกระดับความยาก
+
     if($('.game-zone').is(":visible")){ // ให้วิชาหายเมื่อคำถามขึ้นแล้ว
         $('.subject').hide();
     }
 });
 
 // ------------------------------- กดปุ่มตอบคำถาม ----------------------------- //
-$('.game-zone .box .button-group .next-button').click(function(){
+$('.game-zone-ez .box .button-group .next-button').click(function(){
     let anwser = $(this).text();
     let correct = $(this).closest('.box').attr('data-ans');
-    let count_ele = $('.game-zone .box').length;
-    check_anwser(this,anwser,correct,count_ele); // ค่าที่ส่งไปคือ ele,คำตอบ,คำตอบที่ถูก,จำนวนข้อที่กำหนด
-    
+    let count_ele = $('.game-zone-ez .box').length;
+    check_anwser(this,anwser,correct,count_ele); // ค่าที่ส่งไปคือ ele,คำตอบ,คำตอบที่ถูก,จำนวนข้อที่กำหนด 
+});
+
+$('.game-zone-sp .box .button-group .next-button').click(function(){
+    let anwser = $(this).text();
+    let correct = $(this).closest('.box').attr('data-ans');
+    let count_ele = $('.game-zone-sp .box').length;
+    check_anwserSP(this,anwser,correct,count_ele); // ค่าที่ส่งไปคือ ele,คำตอบ,คำตอบที่ถูก,จำนวนข้อที่กำหนด 
+});
+
+$('.game-zone-rank .box .button-group .next-button').click(function(){
+    let anwser = $(this).text();
+    let correct = $(this).closest('.box').attr('data-ans');
+    let count_ele = $('.game-zone-rank .box').length;
+    check_anwser(this,anwser,correct,count_ele); // ค่าที่ส่งไปคือ ele,คำตอบ,คำตอบที่ถูก,จำนวนข้อที่กำหนด 
 });
 
 var score = 0; // ตัวแปรนับคะแนน
@@ -36,6 +70,27 @@ function check_anwser(that,anw,corr,ele_length){
     nextGame(that);
     countGame(this.ele,score);
     $('.score h2').text(score);
+}
+
+// ฟังก์ชั่นกดคำตอบแบบ SP
+function check_anwserSP(that,anw,corr,ele_length){
+    this.anw = anw;
+    this.corr = corr;
+    this.ele = ele_length;
+    if(this.anw === this.corr){
+        swal("ยินดีด้วย!", "คุณตอบถูก", "success");
+        score++;
+        count_num_game++;
+        $('#min-game').text(count_num_game); // เพิ่มจำนวนข้อที่ทำไปแล้ว
+        nextGame(that);
+        countGame(this.ele,score);
+        $('.score h2').text(score);
+    }
+    else{
+        swal("เสียใจด้วย!", "คุณตอบผิด ต้องตอบคำถามใหม่ตั้งแต่เริ่มต้น", "warning").then(function(){
+            window.location.href = "/";
+        });
+    }
 }
 
 // // ฟังก์ชั่นเลื่อนคำถามถัดไป
@@ -116,6 +171,8 @@ function countGame(count,score){
     }
 }
 
+
+
 // ------------------------------------------------------------------------------------------------------------------ //
 
 // ------------------------------------------------- กดปุ่มเลือกหมวดหมู่ย่อย --------------------------------------------- //
@@ -127,7 +184,7 @@ $('.subject button').click(function(){
 function changeCat(cat){
     this.cat = cat;
     let url = window.location.href;
-    url = url+this.cat;
+    url = url+this.cat+"?mode=easy";
     //console.log(url);
     window.location.href = url;
 }
@@ -324,7 +381,7 @@ $('.register-box .register-form .button #regis').on('click',function(){
 // --------------------------------------------------------------------------------------------------------- //
 
 // -------------------------------------------- ระบบนับเวลาสอบ ---------------------------------------------- //
-if($('.game-zone').is(":visible")){
+if($('.game-zone-ez').is(":visible") || $('.game-zone-sp').is(":visible") || $('.game-zone-rank').is(":visible")){
     var minutesLabel = document.getElementById("time-min");
     var secondsLabel = document.getElementById("time-sec");
     var totalSeconds = 0;

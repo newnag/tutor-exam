@@ -42,7 +42,10 @@ if ( 0 == $current_user->ID ) {
         echo 'Database Update False';
     }
     else{
-        echo 'Update Success';
+        $rank_count = get_user_meta($userid,'rank_count',true);
+        $rank_count -= 1;
+        update_user_meta( $userid, 'rank_count',$rank_count);
+        echo 'Update Success';       
     }
 }
 

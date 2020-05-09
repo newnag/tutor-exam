@@ -162,7 +162,8 @@ section .game-start button {
 }
 
 section .mode-game {
-  display: none;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -230,9 +231,7 @@ section .edu-level .list-level a button {
 }
 
 section .subject {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -241,8 +240,7 @@ section .subject {
 
 @media screen and (max-width: 480px) {
   section .subject {
-    display: -ms-grid;
-    display: grid;
+    display: none;
     -ms-grid-columns: (49%)[2];
         grid-template-columns: repeat(2, 49%);
     grid-gap: 1%;
@@ -279,18 +277,18 @@ section .subject .next-button {
   }
 }
 
-section .game-zone {
+section .game-zone-ez, section .game-zone-sp, section .game-zone-rank {
   width: 60%;
   margin: 0 auto;
 }
 
 @media screen and (max-width: 480px) {
-  section .game-zone {
+  section .game-zone-ez, section .game-zone-sp, section .game-zone-rank {
     width: 95%;
   }
 }
 
-section .game-zone .box {
+section .game-zone-ez .box, section .game-zone-sp .box, section .game-zone-rank .box {
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -302,7 +300,7 @@ section .game-zone .box {
   text-align: center;
 }
 
-section .game-zone .box .question-box {
+section .game-zone-ez .box .question-box, section .game-zone-sp .box .question-box, section .game-zone-rank .box .question-box {
   height: 100px;
   width: 100%;
   background-color: #fff;
@@ -311,7 +309,7 @@ section .game-zone .box .question-box {
   padding: 1%;
 }
 
-section .game-zone .box .button-group {
+section .game-zone-ez .box .button-group, section .game-zone-sp .box .button-group, section .game-zone-rank .box .button-group {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (48%)[2];
@@ -320,7 +318,7 @@ section .game-zone .box .button-group {
   grid-row-gap: 20px;
 }
 
-section .game-zone .box .button-group .next-button {
+section .game-zone-ez .box .button-group .next-button, section .game-zone-sp .box .button-group .next-button, section .game-zone-rank .box .button-group .next-button {
   height: 100px;
   width: 100%;
   background-color: #fff;
@@ -332,7 +330,7 @@ section .game-zone .box .button-group .next-button {
 }
 
 @media screen and (min-width: 1024px) {
-  section .game-zone .box .button-group .next-button:hover {
+  section .game-zone-ez .box .button-group .next-button:hover, section .game-zone-sp .box .button-group .next-button:hover, section .game-zone-rank .box .button-group .next-button:hover {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
     -webkit-box-shadow: 4px 4px 8px #4a4a4a;
@@ -344,7 +342,7 @@ section .game-zone .box .button-group .next-button {
   }
 }
 
-section .game-zone .box .button-group .cheat {
+section .game-zone-ez .box .button-group .cheat, section .game-zone-sp .box .button-group .cheat, section .game-zone-rank .box .button-group .cheat {
   -webkit-animation: cheat 4s infinite;
           animation: cheat 4s infinite;
 }
@@ -395,13 +393,13 @@ section .game-zone .box .button-group .cheat {
   }
 }
 
-section .game-zone .box:nth-child(1) {
+section .game-zone-ez .box:nth-child(1), section .game-zone-sp .box:nth-child(1), section .game-zone-rank .box:nth-child(1) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-section .game-zone .active {
+section .game-zone-ez .active, section .game-zone-sp .active, section .game-zone-rank .active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
