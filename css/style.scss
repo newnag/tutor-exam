@@ -128,80 +128,32 @@ header{
     }
 }
 
-nav{
-    background-color: $background_content;
-    margin: 2% 0;
-    padding: 1% 0;
+.register-login{
+    position: fixed;
+    top: 10%;
+    right: 10%;
 
-    .nav-menu{
-        display: flex;
-        justify-content: center;
+    a{
+        i{
+            font-size: 4em;
+            color: $text_color;
 
-        li{
-            list-style: none;
-            margin: 0 2%;
-            
-            a{
-                text-decoration: none;
-                color: $text_color;
+            &:hover{
+                @media screen and (min-width:$display-6) {
+                    animation: rotage 1s;
+                }  
 
-                @media screen and (min-width:1366px) {
-                    &:hover{
-                        color: green;
-                        font-size: 18px;
-                        transition: all .3s;
+                @keyframes rotage {
+                    0%{
+                        transform: rotate(0);
+                    }
+                    100%{
+                        transform: rotate(360deg);
                     }
                 }
             }
         }
     }
-
-    // .mobile-menu{
-    //     display: none;
-    //     position: relative;
-
-    //     @media screen and (max-width:$display-1) {
-    //         display: block;
-    //         text-align: center;
-    //     }
-
-    //     span{
-    //         font-size: 1.2em;
-    //     }
-
-    //     .nav-menu-mobile{
-    //         display: none;
-    //         position: fixed;
-    //         top: 0;
-    //         width: 100%;
-    //         height: 100%;
-    //         background: #fff;
-    //         z-index: 3;
-
-    //         li{
-    //             list-style: none;
-    //             margin: 3% 0;
-    //             @include font-size(getFontsize('h1'));
-                
-    //             a{
-    //                 text-decoration: none;
-    //                 color: $text_color;
-    //             }
-    //         }
-    //     }
-        
-    //     .close-button{
-    //         display: none;
-    //         position: fixed;
-    //         bottom: 5%;
-    //         left: 45%;
-    //         z-index: 3;
-
-    //         i{
-    //             font-size: 45px;
-    //         }
-    //     }
-    // }
 }
 
 article{
@@ -498,6 +450,16 @@ section{
                     height: 100%;
                 }
             }
+        }
+    }
+    
+    .register-line,.login-line{
+        width: 60%;
+        margin: 2% auto;
+
+        a{
+            text-decoration: none;
+            color: $text_color;
         }
     }
 

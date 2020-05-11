@@ -14,7 +14,7 @@
 <header>
     <div class="header">
         <div class="logo">
-            <figure><img src="<?php bloginfo('template_url') ?>/img/logo/logo.png" alt=""></figure>
+            <a href="/"><figure><img src="<?php bloginfo('template_url') ?>/img/logo/logo.png" alt=""></figure></a>
         </div>
 
         <div class="text-head">
@@ -23,32 +23,6 @@
     </div>
 </header>
 
-<nav>
-    <!-- <ul class="nav-menu">
-        <li class="menu"><a href="">หน้าแรก</a></li>
-        <li class="menu"><a href="">ประถมต้น</a></li>
-        <li class="menu"><a href="">ประถมปลาย</a></li>
-        <li class="menu"><a href="">มัถยมต้น</a></li>
-        <li class="menu"><a href="">มัถยมปลาย</a></li>
-        <li class="menu"><a href="">ความรู้ทั่วไป</a></li>
-    </ul> -->
-    <?php 
-        wp_nav_menu( array(
-            'menu' => 'mainmenu',
-            'menu_class' => 'nav-menu',
-        ) );
-    ?>
-
-    <!-- <div class="mobile-menu">
-        <span id="menu-mobile">Menu</span>
-
-        <?php 
-            wp_nav_menu( array(
-                'menu' => 'mainmenu-mobile',
-                'menu_class' => 'nav-menu-mobile',
-            ) );
-        ?>
-
-        <div class="close-button"><i class="fas fa-times"></i></div>
-    </div> -->
-</nav>
+<div class="register-login">
+    <a href="<?php site_url() ?>/login"><i class="fas fa-user-circle"></i></a>
+</div>
