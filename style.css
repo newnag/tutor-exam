@@ -93,37 +93,43 @@ header .header .text-head {
   }
 }
 
-nav {
-  background-color: #fff;
-  margin: 2% 0;
-  padding: 1% 0;
+.register-login {
+  position: fixed;
+  top: 10%;
+  right: 10%;
 }
 
-nav .nav-menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-nav .nav-menu li {
-  list-style: none;
-  margin: 0 2%;
-}
-
-nav .nav-menu li a {
-  text-decoration: none;
+.register-login a i {
+  font-size: 4em;
   color: #000;
 }
 
-@media screen and (min-width: 1366px) {
-  nav .nav-menu li a:hover {
-    color: green;
-    font-size: 18px;
-    -webkit-transition: all .3s;
-    transition: all .3s;
+@media screen and (min-width: 1025px) {
+  .register-login a i:hover {
+    -webkit-animation: rotage 1s;
+            animation: rotage 1s;
+  }
+}
+
+@-webkit-keyframes rotage {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotage {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -570,6 +576,16 @@ section .login-box .login-form .button {
 section .login-box .login-form .button button {
   width: 100%;
   height: 100%;
+}
+
+section .register-line, section .login-line {
+  width: 60%;
+  margin: 2% auto;
+}
+
+section .register-line a, section .login-line a {
+  text-decoration: none;
+  color: #000;
 }
 
 section .register-box {

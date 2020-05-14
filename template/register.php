@@ -29,6 +29,10 @@
             </div>
         </div>
     </div>
+
+    <div class="login-line">
+        <a href="<?php site_url() ?>/login">เข้าสู่ระบบ</a>
+    </div>
 </section>
 
 <?php get_footer(); ?>

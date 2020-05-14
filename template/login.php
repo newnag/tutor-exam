@@ -14,6 +14,10 @@
             <div class="button"><button>เข้าสู่ระบบ</button></div>
         </div>    
     </div>
+
+    <div class="register-line">
+        <a href="<?php site_url(); ?>/register">สมัครสมาชิก</a>
+    </div>
 </section>
 
 <?php get_footer(); ?>
