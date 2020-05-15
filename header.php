@@ -24,5 +24,13 @@
 </header>
 
 <div class="register-login">
-    <a href="<?php site_url() ?>/login"><i class="fas fa-user-circle"></i></a>
+    <?php 
+        $current_user = wp_get_current_user();
+        if( 0 == $current_user->ID ){
+            echo '<a href="'.site_url().'/login"><i class="fas fa-user-circle"></i></a>';
+        }
+        else{
+            echo '<a href="'.site_url().'/userinfo"><i class="fas fa-user-circle"></i></a>';
+        }
+    ?>
 </div>

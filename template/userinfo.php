@@ -48,6 +48,8 @@
             </div>
         </div>
 
+        <div class="logout"><a href="<?php echo wp_logout_url(); ?>"><button>ออกจากระบบ</button></a></div>
+
         <!-- <div class="button-share" id="fb-share" onclick="sharefacebook()"><button>แชร์</button></div> -->
         
     </div>

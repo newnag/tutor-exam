@@ -337,16 +337,16 @@ $('.close-button').on('click',function(){
 });
 
 // ------------------------------------------- Block F12 ----------------------------------------------- //
-$(document).keydown(function (event) {
-    if (event.keyCode == 123) { // Prevent F12
-        swal("เกิดข้อผิดพลาด","เกิดข้อผิดพลาดบางอย่างจากการกระทำของคุณ","error");
-        return false;
-    } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I   
-        swal("เกิดข้อผิดพลาด","เกิดข้อผิดพลาดบางอย่างจากการกระทำของคุณ","error");     
-        return false;
-    }
-});
-$(document).on("contextmenu", function (e) { 
-    swal("เกิดข้อผิดพลาด","เกิดข้อผิดพลาดบางอย่างจากการกระทำของคุณ","error");       
-    e.preventDefault();
-});
+// $(document).keydown(function (event) {
+//     if (event.keyCode == 123) { // Prevent F12
+//         swal("เกิดข้อผิดพลาด","เกิดข้อผิดพลาดบางอย่างจากการกระทำของคุณ","error");
+//         return false;
+//     } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I   
+//         swal("เกิดข้อผิดพลาด","เกิดข้อผิดพลาดบางอย่างจากการกระทำของคุณ","error");     
+//         return false;
+//     }
+// });
+// $(document).on("contextmenu", function (e) { 
+//     swal("เกิดข้อผิดพลาด","เกิดข้อผิดพลาดบางอย่างจากการกระทำของคุณ","error");       
+//     e.preventDefault();
+// });

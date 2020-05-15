@@ -20,7 +20,7 @@ get_header(); ?>
             <div class="edu-level">
                 <div class="list-level">
                     <a href="<?php echo site_url().'/category/'.$categories[2]->name ?>"><button><?php echo $categories[2]->name ?></button></a>
-                    <a href="<?php echo site_url().'/category'.$categories[3]->name ?>"><button><?php echo $categories[3]->name ?></button></a>
+                    <a href="<?php echo site_url().'/category/'.$categories[3]->name ?>"><button><?php echo $categories[3]->name ?></button></a>
                 </div>
             </div>
         </section>

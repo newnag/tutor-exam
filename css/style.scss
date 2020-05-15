@@ -74,6 +74,10 @@ $font-size:(
             transition: all .2s;
         }
     }
+
+    @media screen and (max-width:$display-1) {
+        margin: 5px 0;
+    }
 }
 
 // ------------------------- use code ------------------------ //
@@ -130,13 +134,20 @@ header{
 
 .register-login{
     position: fixed;
-    top: 10%;
-    right: 10%;
+    top: 2%;
+    right: 0%;
+    background: black;
+    border-radius: 5px;
+    width: 50px;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     a{
         i{
-            font-size: 4em;
-            color: $text_color;
+            font-size: 2em;
+            color: #46da35;
 
             &:hover{
                 @media screen and (min-width:$display-6) {
@@ -312,6 +323,12 @@ section{
                 grid-gap: 4%;
                 grid-row-gap: 20px;
 
+                @media screen and (max-width:$display-1) {
+                    grid-template-columns: 100%;
+                    grid-gap: unset;
+                    grid-row-gap: unset;
+                }
+
                 .next-button{
                     @include button();
                 }
@@ -337,49 +354,56 @@ section{
         }
     }
 
-    .game-score{
+    .detail-game{
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-evenly;
 
-        @media screen and (max-width:$display-1) {
-            flex-direction: column;
-            margin: 5% 0;
-        }
-
-        .total-game{
-            margin: 0 2%;
-            @include font-size(getFontsize('h1'));
-
-            @media screen and (max-width:$display-1) {
-                width: 50%;
-                text-align: center;
-            }
-        }
-        .score{
+        .game-score{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
+            align-items: center;
             width: 15%;
-
+    
             @media screen and (max-width:$display-1) {
-                width: 50%;
+                flex-direction: column;
+                margin: 5% 0;
             }
-
-            h2{
-                margin: 1%;
+    
+            .total-game{
+                margin: 0 2%;
                 @include font-size(getFontsize('h1'));
+    
+                @media screen and (max-width:$display-1) {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+            .score{
+                display: none;
+                justify-content: space-evenly;
+                width: 15%;
+    
+                @media screen and (max-width:$display-1) {
+                    width: 50%;
+                }
+    
+                h2{
+                    margin: 1%;
+                    @include font-size(getFontsize('h1'));
+                }
             }
         }
-    }
-
-    .timer{
-        text-align: center;
-        margin: 2% 0;
-
-        label{
-            @include font-size(getFontsize('h1'))
+    
+        .timer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            label{
+                @include font-size(getFontsize('h1'))
+            }
         }
-    }
+    } 
 
     .user-box{
         text-align: center;
@@ -416,6 +440,13 @@ section{
                 @media screen and (max-width:$display-1) {
                     @include font-size(getFontsize('p'));
                 }
+            }
+        }
+
+        .logout{
+            button{
+                @include button();
+                width: 300px!important;
             }
         }
     }
@@ -531,9 +562,11 @@ section{
         width: 100%;
         padding: 2% 20%;
 
-        @media screen and (max-width:$display-1){
-            margin-bottom: 10%;
-            padding: 0 3%;
+        @media screen and (max-width:$display-1) {
+            grid-template-columns: 100%;
+            grid-gap: unset;
+            grid-row-gap: unset;
+            padding: 2% 5%;
         }
 
         .help{

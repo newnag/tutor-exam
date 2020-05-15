@@ -66,7 +66,7 @@ get_header(); ?>
 <?php
     // เช็คสถานะการเลือกหมวดหมู่ย่อย หากยังไม่เลือกจะไม่แสดงคำถาม
     if($cate === ''){
-        $look = false;
+        $look = false; 
     }
     else{
         $look = true;
@@ -88,8 +88,26 @@ get_header(); ?>
     ));
 ?>
 
+
+
 <!-- ส่วนคำถาม -->
 <?php if($look == true): ?>
+    <section>
+        <div class="detail-game">
+            <div class="game-score">
+                <div class="total-game">จำนวนข้อ <span id="min-game">0</span>/<span id="max-game"></span></div>
+                <div class="score">
+                    <h1>คะแนนที่ได้</h1>
+                    <h2>0</h2>
+                </div>
+            </div>
+
+            <div class="timer">
+                <label id="time-min">00</label>:<label id="time-sec">00</label>
+            </div>
+        </div>
+    </section>
+
     <?php if(have_posts()): ?>
         <section id="gamezone" data-gamemode="<?php echo $_REQUEST['mode'] ?>">
             <?php if($_REQUEST['mode'] === "easy"): ?>
@@ -176,19 +194,6 @@ get_header(); ?>
                     <?php endif; ?>
                 <?php endif; ?>
             <?php endif; ?>
-            
-
-            <div class="game-score">
-                <div class="total-game">จำนวนข้อ <span id="min-game">0</span>/<span id="max-game"></span></div>
-                <div class="score">
-                    <h1>คะแนนที่ได้</h1>
-                    <h2>0</h2>
-                </div>
-            </div>
-
-            <div class="timer">
-                <label id="time-min">00</label>:<label id="time-sec">00</label>
-            </div>
         </section>
 
         <!-- ส่วนตัวช่วย -->
